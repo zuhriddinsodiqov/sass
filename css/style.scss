@@ -1,0 +1,148 @@
+@import './_global' ;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&family=Rubik+Bubbles&display=swap');
+
+@mixin card(){
+    width: 100%;
+    padding: 4rem 0;
+}
+@mixin grid ($repeat){
+    display: grid;
+    grid-template-columns:$repeat ;
+    gap: 3rem;
+    align-items: center;
+}
+@mixin title (){
+    text-align: center;
+    margin-bottom: 1rem;
+}
+@mixin btn ($bgc, $first, $bgcc, $color){
+    padding: 10px 20px;
+    background-color: $bgc;
+    color: $first;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    transition: all 0.5s linear;
+    &:hover{
+        background-color: $bgcc;
+        color: $color;
+    }
+}
+.header{
+    width: 100%;
+    padding: 4rem 0;
+    background-image: url(/img/banner-bg.png);
+    background-size: cover;
+}
+.navigation{
+    width: 100%;
+    height: 10vh;
+    background-color: #fff;
+    .navbar{
+        height: 10vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        .navbar__nav{
+            a{
+                margin-left: 10px;
+                margin-right: 10px;
+                font-size: 1.3rem;
+                transition: all 0.5s ease;
+                &:hover{
+                    opacity: 0.3 ;
+                }
+            }
+        }
+        .nav__icon{
+            i{
+                margin-left: 10px;
+                margin-right: 10px;
+                font-size: 1.3rem;
+                transition: all 0.5s ease;
+                &:hover{
+                    opacity: 0.3 ;
+                }
+            }
+        }
+    }
+}
+.banner{
+    width: 100%;
+    height: 100%;
+    .banner__content{
+        @include grid((repeat(2,1fr))) ;
+        align-items: center;
+        h1{
+            font-size: 3.5rem;
+            color: #fff;
+        }
+        p{
+            margin-bottom: 1rem;
+            color: #fff;
+            opacity: 0.5;
+        }
+        button{
+            margin-right: 15px;
+            &:first-of-type{
+                @include btn(yellow, black, black, yellow);
+            }
+            &:last-of-type{
+                @include btn(black, yellow,yellow, black );
+            }
+        }
+    }
+}
+.courses{
+    @include card();
+    .title{
+        @include title();
+        h2{
+            font-size: 2rem;
+            span{
+                opacity: 0.5;
+            }
+        }
+    }
+}
+.courses__content{
+    @include grid(repeat(2,1fr));
+    .img{
+        position: relative;
+        cursor: pointer;
+        .img__hover{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: #000000, $alpha: 0.8);
+            top: 0;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.5s ease;
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+}
+.about{
+    @include card();
+    .title{
+        @include title();
+        h2{
+            font-size: 2rem;
+        }
+        p{
+            opacity: 0.7;
+        }
+    }
+}
+.about__content{
+    @include grid(repeat(2,1fr));
+    .item{
+        border: 1px solid red;
+        padding: 2rem 2rem;
+    }
+}
